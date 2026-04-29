@@ -55,13 +55,13 @@ function scrollTo(sectionId) {
 
 // Sample claims data - will be replaced with real backend data
 const sampleClaims = [
-    { wallet: 'r9KHe5Q...', amount: 45500, initials: 'KH', time: '2s ago', hash: '5B2F...A1E9' },
-    { wallet: 'rJ4Md8m...', amount: 8200, initials: 'JM', time: '12s ago', hash: '8C1A...B2D4' },
-    { wallet: 'rXpDkFp...', amount: 52100, initials: 'XP', time: '45s ago', hash: '2E4D...F6G8' },
-    { wallet: 'rGcEt9M...', amount: 1800, initials: 'GM', time: '1m ago', hash: '9H3J...K5L7' },
-    { wallet: 'rBvKpT2...', amount: 75300, initials: 'BP', time: '3m ago', hash: '1M4N...P6Q8' },
-    { wallet: 'rF5nTx8...', amount: 3700, initials: 'FT', time: '5m ago', hash: '4R7S...T9U1' },
-    { wallet: 'rH2PqWm...', amount: 88900, initials: 'HP', time: '8m ago', hash: '7V0W...X2Y4' },
+    { wallet: 'r9KHe5Q...', type: 'xrp', amount: 45500, initials: 'KH', time: '2s ago', hash: '5B2F...A1E9' },
+    { wallet: 'rJ4Md8m...', type: 'nft', amount: 'XRPL Punk #842', initials: 'JM', time: '12s ago', hash: '8C1A...B2D4' },
+    { wallet: 'rXpDkFp...', type: 'xrp', amount: 52100, initials: 'XP', time: '45s ago', hash: '2E4D...F6G8' },
+    { wallet: 'rGcEt9M...', type: 'nft', amount: 'Exclusive Pass', initials: 'GM', time: '1m ago', hash: '9H3J...K5L7' },
+    { wallet: 'rBvKpT2...', type: 'xrp', amount: 75300, initials: 'BP', time: '3m ago', hash: '1M4N...P6Q8' },
+    { wallet: 'rF5nTx8...', type: 'xrp', amount: 3700, initials: 'FT', time: '5m ago', hash: '4R7S...T9U1' },
+    { wallet: 'rH2PqWm...', type: 'nft', amount: 'XRP Ape #102', initials: 'HP', time: '8m ago', hash: '7V0W...X2Y4' },
 ];
 
 // Initialize live claims ticker
@@ -76,10 +76,15 @@ function initializeClaimsTicker() {
 
     // Add new random claims periodically (simulated)
     setInterval(() => {
+        const isNFT = Math.random() > 0.7; // 30% chance for NFT
+        const nftNames = ['XRPL Punk', 'Exclusive Pass', 'XRP Ape', 'Genesis Drop', 'Founder Badge'];
+        
         const randomClaim = {
             wallet: 'r' + Math.random().toString(36).substring(2, 6).toUpperCase() + Math.random().toString(36).substring(2, 6).toUpperCase() + '...',
-            // Skewed distribution: favors smaller numbers while staying in 30 - 90,000 range
-            amount: Math.floor(Math.pow(Math.random(), 3) * (90000 - 30) + 30),
+            type: isNFT ? 'nft' : 'xrp',
+            amount: isNFT 
+                ? `${nftNames[Math.floor(Math.random() * nftNames.length)]} #${Math.floor(Math.random() * 9999)}`
+                : Math.floor(Math.pow(Math.random(), 3) * (90000 - 30) + 30),
             initials: String.fromCharCode(65 + Math.random() * 25) + String.fromCharCode(65 + Math.random() * 25),
             time: 'just now',
             hash: Math.random().toString(16).substring(2, 6).toUpperCase() + '...' + Math.random().toString(16).substring(2, 6).toUpperCase()
@@ -94,15 +99,22 @@ function addClaimToTicker(claim, prepend = false) {
 
     const claimElement = document.createElement('div');
     claimElement.className = 'claim-item';
+    
+    const displayAmount = claim.type === 'nft' 
+        ? `🎁 ${claim.amount}`
+        : `+${claim.amount.toLocaleString()} XRP`;
+
+    const badgeColor = claim.type === 'nft' ? '#a855f7' : '#22c55e'; // Purple for NFT, Green for XRP
+
     claimElement.innerHTML = `
-        <div class="claim-avatar">${claim.initials}</div>
+        <div class="claim-avatar" style="${claim.type === 'nft' ? 'background: linear-gradient(135deg, #a855f7, #6b21a8);' : ''}">${claim.initials}</div>
         <div class="claim-details">
             <h4>${claim.wallet}</h4>
             <span class="claim-hash">${claim.hash || claim.time}</span>
         </div>
         <div>
-            <div class="claim-amount">+${claim.amount.toLocaleString()} XRP</div>
-            <span class="claim-badge">VERIFIED</span>
+            <div class="claim-amount" style="${claim.type === 'nft' ? 'color: #c084fc;' : ''}">${displayAmount}</div>
+            <span class="claim-badge" style="color: ${badgeColor}; border-color: ${badgeColor}40; background: ${badgeColor}15;">VERIFIED</span>
         </div>
     `;
 
